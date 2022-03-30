@@ -39,8 +39,11 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 75" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HZ6-N7-sQb">
                                 <rect key="frame" x="89" y="191" width="110" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="xNg-o0-TIq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altura (m)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-36-Few">
                                 <rect key="frame" x="229" y="165" width="110" height="18"/>
@@ -51,7 +54,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 1,75" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gr1-6S-tvr">
                                 <rect key="frame" x="229" y="191" width="110" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkA-VH-0ks">
                                 <rect key="frame" x="89" y="239" width="250" height="44"/>
@@ -64,8 +67,16 @@
                                 <state key="normal" title="Calcular">
                                     <color key="titleColor" red="0.31764705882352939" green="0.61960784313725492" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="calculate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lpI-tv-CmY"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUg-iY-Iwg">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUg-iY-Iwg">
                                 <rect key="frame" x="0.0" y="303" width="428" height="589"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seu índice de Massa Corporal é:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKw-eR-yxx">
@@ -106,6 +117,7 @@
                             <constraint firstItem="dBi-dd-fp9" firstAttribute="top" secondItem="LYE-8k-5Z2" secondAttribute="bottom" constant="20" id="6yx-hD-z2Q"/>
                             <constraint firstItem="Gr1-6S-tvr" firstAttribute="centerX" secondItem="L1U-36-Few" secondAttribute="centerX" id="B2k-fV-6hv"/>
                             <constraint firstItem="HZ6-N7-sQb" firstAttribute="top" secondItem="GKX-8E-Rt2" secondAttribute="bottom" constant="8" id="BJS-yd-nrJ"/>
+                            <constraint firstItem="CkA-VH-0ks" firstAttribute="top" secondItem="HZ6-N7-sQb" secondAttribute="bottom" constant="14" id="FUg-87-pfI"/>
                             <constraint firstItem="nUg-iY-Iwg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fpa-ah-HeH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LYE-8k-5Z2" secondAttribute="trailing" constant="16" id="IHY-CR-3Ns"/>
                             <constraint firstItem="L1U-36-Few" firstAttribute="width" secondItem="GKX-8E-Rt2" secondAttribute="width" id="MFI-x6-zdH"/>
@@ -124,9 +136,15 @@
                             <constraint firstItem="HZ6-N7-sQb" firstAttribute="width" secondItem="GKX-8E-Rt2" secondAttribute="width" id="mwS-Oz-WEv"/>
                             <constraint firstItem="dBi-dd-fp9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sVA-ge-Sbo"/>
                             <constraint firstItem="LYE-8k-5Z2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="yL4-t2-cG1"/>
-                            <constraint firstItem="CkA-VH-0ks" firstAttribute="top" secondItem="HZ6-N7-sQb" secondAttribute="bottom" constant="14" id="yiH-ke-Wbi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ivResult" destination="5cx-fz-h9B" id="Hhs-Yd-9UC"/>
+                        <outlet property="lbResult" destination="KLw-f2-CUp" id="uOz-Ar-huq"/>
+                        <outlet property="tfHeight" destination="Gr1-6S-tvr" id="w8U-E9-rHW"/>
+                        <outlet property="tfWeight" destination="HZ6-N7-sQb" id="xeQ-fJ-QhW"/>
+                        <outlet property="viResult" destination="nUg-iY-Iwg" id="BZO-vD-6eS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
